@@ -27,4 +27,10 @@ public class BookingOfficeController {
         BookingOffice bookingOfficeResponse = bookingOfficeService.saveBookingOfficeDTO(bookingOfficeDTO);
         return bookingOfficeResponse;
     }
+
+    @PostMapping(value = "/viewOffice/{id}")
+    public BookingOfficeDTO getBookingOfficeById(@PathVariable("id") long id) {
+        BookingOfficeDTO bookingOfficeResponse = bookingOfficeService.getBookingOfficeDto(id);
+        return bookingOfficeResponse;
+    }
 }

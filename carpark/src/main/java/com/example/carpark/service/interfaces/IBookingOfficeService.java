@@ -8,4 +8,5 @@ import java.util.List;
 public interface IBookingOfficeService {
     List<BookingOfficeDTO> bookingOfficeDtoList();
     BookingOffice saveBookingOfficeDTO(BookingOfficeDTO bookingOfficeDTO);
+    BookingOfficeDTO getBookingOfficeDto(long id);
 }

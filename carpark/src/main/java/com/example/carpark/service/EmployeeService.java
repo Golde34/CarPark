@@ -17,9 +17,11 @@ public class EmployeeService implements IEmployeeService {
 
     @Autowired
     private final EmployeeRepository employeeRepository;
-    ModelMapper mapper = new ModelMapper();
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    @Autowired
+    private ModelMapper mapper;
+    public EmployeeService(EmployeeRepository employeeRepository, ModelMapper mapper) {
         this.employeeRepository = employeeRepository;
+        this.mapper = mapper;
     }
 
     @Transactional

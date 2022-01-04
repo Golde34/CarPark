@@ -18,9 +18,11 @@ public class ParkingLotService implements IParkingLotService {
 
     @Autowired
     private final ParkingLotRepository parkingLotRepository;
-    ModelMapper mapper = new ModelMapper();
-    public ParkingLotService(ParkingLotRepository parkingLotRepository) {
+    @Autowired
+    private ModelMapper mapper;
+    public ParkingLotService(ParkingLotRepository parkingLotRepository, ModelMapper mapper) {
         this.parkingLotRepository = parkingLotRepository;
+        this.mapper = mapper;
     }
 
     public ParkingLotDTO getParkingLot(int id) {
@@ -55,9 +57,13 @@ public class ParkingLotService implements IParkingLotService {
     public ParkingLot editParkingLot(int id, ParkingLotDTO parkingLotDTO) {
         ParkingLot parkingLot = mapper.map(parkingLotDTO, ParkingLot.class);
         parkingLot.setId(id);
+
+        //add car again #Json car list null
+        ParkingLotDTO oldParkingLotDTO = getParkingLot(id);
+        ParkingLot oldParkingLot = mapper.map(oldParkingLotDTO, ParkingLot.class);
         List cars = new ArrayList();
-        if (parkingLot.getCar() != null) {
-            for (Car c : parkingLot.getCar()) {
+        if (oldParkingLot.getCar() != null) {
+            for (Car c : oldParkingLot.getCar()) {
                 cars.add(c);
             }
             parkingLot.getCar().clear();

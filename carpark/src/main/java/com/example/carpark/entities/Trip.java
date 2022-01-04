@@ -38,11 +38,11 @@ public class Trip {
     @Column(name = "maximum_online_ticket_number")
     private Integer maximumOnlineTicketNumber;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip", orphanRemoval = true)
     @JsonIgnore
     private List<Ticket> tickets;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip", orphanRemoval = true)
     @JsonIgnore
     private List<BookingOffice> offices;
 }

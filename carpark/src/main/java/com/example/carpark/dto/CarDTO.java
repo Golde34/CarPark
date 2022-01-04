@@ -13,4 +13,5 @@ public class CarDTO {
     private String color;
     private String company;
     private ParkingLot parkingLot;
+    private List<Ticket> ticket;
 }

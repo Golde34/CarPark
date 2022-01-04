@@ -13,10 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/parkingLotController")
 public class ParkingLotController {
+
     @Autowired
     private IParkingLotService parkingLotService;
 
-    @RequestMapping(value = "/addParkingLot", method = RequestMethod.POST)
+    @PostMapping(value = "/addParkingLot")
     public ParkingLot addParkingLot(@RequestBody ParkingLotDTO parkingLotDTO) {
         ParkingLot parkingLotResponse = parkingLotService.saveParkingLot(parkingLotDTO);
         return parkingLotResponse;
@@ -24,8 +25,8 @@ public class ParkingLotController {
 
     @RequestMapping(value = "/displayParkingLot", method = RequestMethod.GET)
     public List<ParkingLotDTO> displayParkingLot() {
-        List<ParkingLotDTO> listEmployeeResponse = parkingLotService.listParkingLotDto();
-        return listEmployeeResponse;
+        List<ParkingLotDTO> listParkingLotResponse = parkingLotService.listParkingLotDto();
+        return listParkingLotResponse;
     }
 
     @RequestMapping(value = "/editParkingLot/{id}", method = RequestMethod.POST)

@@ -8,4 +8,7 @@ import java.util.List;
 public interface ICarService {
     List<CarDTO> getAllCar();
     Car saveCar(CarDTO carDTO);
+    CarDTO getCarDto(String license);
+    Car editCar(String license, CarDTO carDTO);
+    Car deleteCar(String license);
 }
